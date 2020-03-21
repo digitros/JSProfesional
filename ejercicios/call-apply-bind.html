@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+        <li><button class="call-to-action">Aprender</button></li>
+        <li><button class="call-to-action">Aprender más</button></li>
+        <li><button class="call-to-action">¡Nunca parar de aprender!</button></li>
+    </ul>
+
+
+    <script>
+        //establece "this" usando "call"
+        function saludar(){
+            console.log(`Hola, soy ${this.name} ${this.apellido}`);
+        }
+
+        const diego = {
+            name: 'Diego',
+            apellido: 'Valdez'
+        }
+
+        function caminar (metros, direccion){
+            console.log(`${this.name} camina ${metros} metros hacia ${direccion}`)
+        }
+
+        saludar.call(diego);
+        caminar.call(diego, 400, "Norte");
+
+        //establece "this" usando "apply"
+
+        const valores = [800, "este"];
+        caminar.apply(diego, valores);
+
+
+        //establece "this" usando "apply"
+
+        const daniel = {name: "Daniel", apellido: "Sanchez"};
+        const danielSaluda = saludar.bind(daniel);
+
+        danielSaluda();
+
+        const danielCamina = caminar.bind(daniel);
+        danielCamina(1000, "sur");
+
+        const danielCamina2 = caminar.bind(daniel, 2000);
+        danielCamina2();
+
+        const danielCamina3 = caminar.bind(daniel, 5000);
+        danielCamina3("oeste");
+
+        //Cuándo es útil usar uno de eestos métodos
+
+        const buttons = document.getElementsByClassName("call-to-action");
+        // buttons.forEach(button => {
+        //     button.onclick = () => alert('Nunca pares de aprender!')
+        // })
+
+        Array.prototype.forEach.call(buttons, button => {
+            button.onclick = () => alert('Nunca pares de aprender!')
+        })
+
+    </script>
+</body>
+</html>
