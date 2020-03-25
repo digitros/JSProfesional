@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/ejercicios/"></a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+        let person = {
+            name: 'Diego',
+            last_name: 'Valdez',
+            age: 23,
+            get fullName(){
+                return `${this.name} ${this.last_name}`
+            }
+        }
+
+        console.log(person.fullName)
+
+        let person2 = {
+            name: 'Sharon',
+            last_name: 'Arana',
+            age: 23,
+            languages: [],
+            set skills(skills){
+                this.languages = skills
+            }
+        }
+
+        person2.skills = ['rubi', 'rails', 'python']
+        person2.languages.map(language => console.log(language))
+        console.log(person2.languages)
+    </script>
+</body>
+</html>
